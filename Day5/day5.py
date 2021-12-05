@@ -1,5 +1,5 @@
 from pathlib import Path
-from collections import Counter
+from collections import defaultdict
 
 
 class Coord:
@@ -36,7 +36,7 @@ def solve_puzzle(puzzle_input, part_one=False):
         if part_one and x1 != x2 and y1 != y2:
             continue
         valid_coords.append(Coord(x1, y1, x2, y2))
-    res = Counter()
+    res = defaultdict(int)
     for i in valid_coords:
         for coord in i.all_positions:
             res[coord] += 1
