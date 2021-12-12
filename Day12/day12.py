@@ -20,7 +20,7 @@ def solve_puzzle(puzzle_input):
         return True
 
     def find_paths(part_one=False):
-        res = []
+        res = 0
         to_check = [['start']]
         processor = valid_path_part_one if part_one else valid_path_part_two
         while len(to_check) > 0:
@@ -28,10 +28,10 @@ def solve_puzzle(puzzle_input):
             connections = caves[path[-1]]
             for i in connections:
                 if i == 'end':
-                    res.append(path+['end'])
+                    res += 1
                 elif processor(path, i):
                     to_check.append(path+[i])
-        return len(res)
+        return res
 
     caves = defaultdict(list)
     for i in puzzle_input:
